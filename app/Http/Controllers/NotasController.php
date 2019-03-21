@@ -9,7 +9,13 @@ class NotasController extends Controller
 {
     function index(){
 
-        return view('notas', ['notas' => Notes::orderBy('note_is_favorite', 'desc')->get()]);
+        return view('notas', ['notas' => Notes::orderBy('created_at', 'desc')->get()]);
+
+    }
+
+    public function show($id){
+
+        return view('nota', ['nota' => Notes::findOrFail($id)]);
 
     }
 
@@ -25,19 +31,31 @@ class NotasController extends Controller
 
     }
 
-    public function show($id){
-        return view('nota', ['nota' => Notes::findOrFail($id)]);
-    }
-
     public function showEdit($id){
+
         return view('editar_nota', ['nota' => Notes::findOrFail($id)]);
+        
+    }    
+
+    function create(Request $request){
+
+        Notes::create(['note_text' => $request->note_text]);
+
+        return redirect()->route('notas.index');
+
     }
 
-    function delete($id){
+    function updateNotes(Request $request){
 
-        Notes::findOrFail($id)->delete();
+        $nota = Notes::find($request->note_id);
 
-        return view('notas', ['notas' => Notes::orderBy('note_is_favorite', 'desc')->get()]);
+        if($nota){
+            $nota->note_text = $request->note_text;
+        }
+        
+        $nota->save();
+
+        return redirect()->route('notas.index');
 
     }
 
@@ -53,7 +71,15 @@ class NotasController extends Controller
         
         $nota->save();
 
-        return view('notas', ['notas' => Notes::orderBy('note_is_favorite', 'desc')->get()]);
+        return redirect()->route('notas.index');
+
+    }
+
+    function delete($id){
+
+        Notes::findOrFail($id)->delete();
+
+        return redirect()->route('notas.index');
 
     }
 

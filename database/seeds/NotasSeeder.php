@@ -15,7 +15,12 @@ class NotasSeeder extends Seeder
     {
         DB::table('notes')->truncate();
 
-        factory(Notes::class, 10)->create();
+        factory(Notes::class)->create([
+            'note_text' => 'Esta es la primera nota creada',
+            'note_is_favorite' => true
+        ]);
+
+        factory(Notes::class, 19)->create();
 
     }
 }

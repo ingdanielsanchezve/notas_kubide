@@ -8037,6 +8037,7 @@ ul.flexbox {
   border: none;
   outline: none !important;
   background-color: transparent;
+  width: 100%;
 }
 
 .publisher-btn {

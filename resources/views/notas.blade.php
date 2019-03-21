@@ -19,10 +19,16 @@
              
              <div class="active tab-pane" id="timeline">
                 <div class="publisher publisher-multi bg-white b-1 mb-30">
-                  <textarea class="publisher-input auto-expand" rows="4" placeholder="Escribe una nota"></textarea>
-                  <div class="flexbox">
-                    <button class="btn btn-xs btn-bold btn-primary"> <i class="fa fa-save"></i> </button>
-                  </div>
+
+
+                  <form method="POST" action="{{ url('/notas') }}">
+                    
+                    <textarea name="note_text" class="publisher-input auto-expand" rows="4" placeholder="Escribe una nota"></textarea>
+                    <div class="flexbox">
+                    {{ csrf_field() }}
+                      <button type="submit" class="btn btn-xs btn-bold btn-primary"> <i class="fa fa-save"></i> </button>
+                    </div>
+                    </form>
                 </div> 
                 
 
@@ -53,19 +59,19 @@
                                     <nav class="nav nav-dot-separated no-gutters">
                                       @if($nota->note_is_favorite)
                                         <div class="nav-item">
-                                            <a class="nav-link text-warning" href="/marcar_favorita/{{$nota->note_id}}"><i class="fa fa-star"></i></a>
+                                            <a class="nav-link text-warning" href="{{ url('/marcar_favorita/'.$nota->note_id) }}"><i class="fa fa-star"></i></a>
                                         </div>
                                       @else
                                         <div class="nav-item">
-                                            <a class="nav-link" href="/marcar_favorita/{{$nota->note_id}}"><i class="fa fa-star-o"></i></a>
+                                            <a class="nav-link" href="{{ url('/marcar_favorita/'.$nota->note_id) }}"><i class="fa fa-star-o"></i></a>
                                         </div>
                                       @endif
                                     </nav>
 
                                     <nav class="nav no-gutters gap-2 font-size-16 media-hover-show float-right">
-                                        <a class="nav-link text-primary" href="/notas/{{$nota->note_id}}" data-toggle="tooltip" title="" data-original-title="Mostrar"><i class="ion-eye"></i></a>
-                                        <a class="nav-link text-success" href="/editar_nota/{{$nota->note_id}}" data-toggle="tooltip" title="" data-original-title="Editar"><i class="ion-edit"></i></a>
-                                        <a class="nav-link text-danger" href="/eliminar_nota/{{$nota->note_id}}" data-toggle="tooltip" title="" data-original-title="Borrar"><i class="ion-close"></i></a>
+                                        <a class="nav-link text-primary" href="{{ url('/notas/'.$nota->note_id) }}" data-toggle="tooltip" title="" data-original-title="Mostrar"><i class="ion-eye"></i></a>
+                                        <a class="nav-link text-success" href="{{ url('/editar_nota/'.$nota->note_id) }}" data-toggle="tooltip" title="" data-original-title="Editar"><i class="ion-edit"></i></a>
+                                        <a class="nav-link text-danger" href="{{ url('/eliminar_nota/'.$nota->note_id) }}" data-toggle="tooltip" title="" data-original-title="Borrar"><i class="ion-close"></i></a>
                                     </nav>
                                 </div>
                                 </div>

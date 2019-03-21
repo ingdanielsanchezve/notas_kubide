@@ -52,7 +52,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="/" class="logo">
+    <a href="{{ action('NotasController@index') }}" class="logo">
       <!-- mini logo -->
 	  <b class="logo-mini">
 		  <span class="light-logo"><img src="{{ asset('logo.png') }}" alt="logo"></span>

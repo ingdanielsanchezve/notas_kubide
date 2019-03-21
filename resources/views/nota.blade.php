@@ -32,20 +32,20 @@
                                   <p> <time class="timeago float-right" datetime="{{$nota->created_at}}"></time></p>
                                     <div class="media-block-actions">
                                     <nav class="nav nav-dot-separated no-gutters">
-                                      @if($nota->note_is_favorite)
+                                    @if($nota->note_is_favorite)
                                         <div class="nav-item">
-                                            <a class="nav-link text-warning" href="#"><i class="fa fa-star"></i></a>
+                                            <a class="nav-link text-warning" href="{{ url('/marcar_favorita/'.$nota->note_id) }}"><i class="fa fa-star"></i></a>
                                         </div>
                                       @else
                                         <div class="nav-item">
-                                            <a class="nav-link" href="#"><i class="fa fa-star-o"></i></a>
+                                            <a class="nav-link" href="{{ url('/marcar_favorita/'.$nota->note_id) }}"><i class="fa fa-star-o"></i></a>
                                         </div>
                                       @endif
                                     </nav>
 
                                     <nav class="nav no-gutters gap-2 font-size-16 media-hover-show float-right">
-                                    <a class="nav-link text-success" href="/editar_nota/{{$nota->note_id}}" data-toggle="tooltip" title="" data-original-title="Editar"><i class="ion-edit"></i></a>
-                                    <a class="nav-link text-danger" href="/eliminar_nota/{{$nota->note_id}}" data-toggle="tooltip" title="" data-original-title="Borrar"><i class="ion-close"></i></a>
+                                    <a class="nav-link text-success" href="{{ url('/editar_nota/'.$nota->note_id) }}" data-toggle="tooltip" title="" data-original-title="Editar"><i class="ion-edit"></i></a>
+                                        <a class="nav-link text-danger" href="{{ url('/eliminar_nota/'.$nota->note_id) }}" data-toggle="tooltip" title="" data-original-title="Borrar"><i class="ion-close"></i></a>
                                     </nav>
                                 </div>
                                 </div>
@@ -56,7 +56,7 @@
                   </div>
                         
                   <div class="text-center bt-1 border-light p-2">
-                    <a class="text-uppercase d-block font-size-12" href="/">Volver al Listado</a>
+                    <a class="text-uppercase d-block font-size-12" href="{{ action('NotasController@index') }}">Volver al Listado</a>
                   </div>
                 </div>
                 
