@@ -39,8 +39,14 @@ class NotasController extends Controller
 
     function create(Request $request){
 
-        Notes::create(['note_text' => $request->note_text]);
+        $data = request()->validate([
+            'note_text' => 'required'
+        ], [
+            'note_text.required' => 'Ingrese el texto de la nota'
+        ]); 
 
+        Notes::create(['note_text' => $data['note_text']]);
+        
         return redirect()->route('notas.index');
 
     }

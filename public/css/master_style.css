@@ -6303,6 +6303,10 @@ ul.flexbox {
   margin-top: 1rem;
   -webkit-transition: .5s;
   transition: .5s;
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
 }
 
 .media:hover .media-block-actions {

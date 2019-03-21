@@ -22,7 +22,7 @@
                     <form method="POST" action="{{ url('/actualizar_notas') }}">
                         {{ csrf_field() }}
                         <input type="hidden" value="{{$nota->note_id}}" name="note_id">
-                        <textarea class="publisher-input auto-expand" name="note_text" rows="4" placeholder=""> {{ e($nota->note_text) }} </textarea>
+                        <textarea class="publisher-input auto-expand" name="note_text" rows="4" placeholder=""> {{ old('note_text', $nota->note_text) }} </textarea>
                         <div class="flexbox">
                             <button type="submit" class="btn btn-xs btn-bold btn-primary"> <i class="fa fa-save"></i> </button>
                         </div>

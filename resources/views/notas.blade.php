@@ -23,7 +23,10 @@
 
                   <form method="POST" action="{{ url('/notas') }}">
                     
-                    <textarea name="note_text" class="publisher-input auto-expand" rows="4" placeholder="Escribe una nota"></textarea>
+                    <textarea name="note_text" required="required" class="publisher-input auto-expand" rows="4" placeholder="Escribe una nota"></textarea>
+                    @if($errors->has('note_text'))
+                        <p class="text-danger">{{ $errors->first('note_text') }}!!!</p>
+                    @endif
                     <div class="flexbox">
                     {{ csrf_field() }}
                       <button type="submit" class="btn btn-xs btn-bold btn-primary"> <i class="fa fa-save"></i> </button>

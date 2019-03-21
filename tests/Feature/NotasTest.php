@@ -50,4 +50,15 @@ class NotasTest extends TestCase
             'note_text' => 'Esta es una nota para pruebas unitarias'
         ]);
     }
+
+    /** @test */
+    function it_checks_note_text_is_required()
+    {
+        $this->post('/notas', [
+            'note_text' => null
+        ])->assertRedirect(route('notas.index'))
+          ->assertSessionHasErrors(['note_text' => 'Ingrese el texto de la nota']);
+
+        $this->assertEquals(0, Notes::count());
+    }
 }
