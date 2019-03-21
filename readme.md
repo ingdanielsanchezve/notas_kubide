@@ -45,6 +45,11 @@ php artisan migrate --seed
 * [Laravel](https://laravel.com/) - El framework web usado
 * [fab-admin](http://fab-admin-templates.multipurposethemes.com/fab-admin/src/) - Interfaz gráfica
 
-## Licencia 📄
+## History
+2019-03-21 - First public version
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+## Credits
+- Developed by: Daniel Sánchez
+
+## License
+The MIT License (MIT)
