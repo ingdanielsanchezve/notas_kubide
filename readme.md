@@ -39,6 +39,13 @@ _En el directorio donde se ha descomprimido el proyecto ejecutar el comando_
 ```
 php artisan migrate --seed
 ```
+## Ejecutando las pruebas ⚙️
+
+_Se realizaron algunas pruebas unitarias utilizando PHPUnit, las misma pueden ser ejecutadas utilizando el comando dentro del directorio local_
+
+```
+vendor/bin/phpunit
+```
 
 ## Construido con 🛠️
 
